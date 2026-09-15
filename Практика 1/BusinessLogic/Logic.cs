@@ -18,13 +18,12 @@ namespace BusinessLogic
         {
             students.Add(new Student(name, speciality, group));
         }
-        public void DeleteStudent(string name, string speciality, string group, Guid id)
+        public void DeleteStudent(int index)
         {
-            students.RemoveAll(s => s.Name == name && s.Speciality == speciality && s.Group == group && s.Id == id);
-        }
-        public List<Student> GetStudents()
-        {
-            return students;
+            if (index >= 0 && index < students.Count)
+            {
+                students.RemoveAt(index);
+            }
         }
         public Histogram CreateHistogram()
         {
