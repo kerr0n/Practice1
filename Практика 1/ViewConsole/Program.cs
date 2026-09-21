@@ -5,6 +5,7 @@ Console.WriteLine("Добро пожаловать в ДеканатPRO");
 bool markerToWhile = true;
 while (markerToWhile)
 {
+    Console.Clear();
     Console.WriteLine("Выберите действие:");
     Console.WriteLine("1. Добавить студента");
     Console.WriteLine("2. Удалить студента");
@@ -20,7 +21,7 @@ while (markerToWhile)
             string name = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(name) || name.Any(char.IsSymbol)) 
             {
-                Console.WriteLine("Имя студента не может быть пустым или содержать символы. Пожалуйста, попробуйте снова.");
+                Console.WriteLine("Имя студента не может быть пустым или содержать специальные символы. Пожалуйста, попробуйте снова.");
                 break;
             }
             Console.WriteLine("Введите специальность студента:");
@@ -38,6 +39,9 @@ while (markerToWhile)
                 break;
             }
             logic.AddStudent(name, speciality, group);
+            Console.WriteLine("Студент успешно добавлен.");
+            Console.WriteLine("Нажмите любую клавишу, чтобы продолжить");
+            Console.ReadKey();
             break;
         case "2":
             Console.Clear();
@@ -52,6 +56,30 @@ while (markerToWhile)
             {
                 Console.WriteLine("Неверный номер студента. Пожалуйста, попробуйте снова.");
             }
+            Console.WriteLine("Нажмите любую клавишу, чтобы продолжить");
+            Console.ReadKey();
+            break;
+        case "3":
+            Console.Clear();
+            Console.WriteLine("Список студентов:");
+            for (int i = 0; i < logic.students.Count; i++)
+            {
+                var student = logic.students[i];
+                Console.WriteLine($"{i + 1}. {student.ToString()}");
+            }
+            Console.WriteLine("Нажмите любую клавишу, чтобы продолжить");
+            Console.ReadKey();
+            break;
+        case "4":
+            Console.Clear();
+            var histogram = logic.CreateHistogram();
+            Console.WriteLine("Гистограмма специальностей:");
+            foreach (var entry in histogram.GetHistogram())
+            {
+                Console.WriteLine($"{entry.Key,-25}: {new string('#', entry.Value)}");
+            }
+            Console.WriteLine("Нажмите любую клавишу, чтобы продолжить");
+            Console.ReadKey();
             break;
         case "5":
             markerToWhile = false;

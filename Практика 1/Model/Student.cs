@@ -6,7 +6,6 @@ namespace Model
 {
     public class Student
     {
-        //public Guid Id { get; } = new Guid();
         public string Name { get; set; }
         public string Speciality { get; set; }
         public string Group { get; set; }
@@ -15,6 +14,10 @@ namespace Model
             Name = name;
             Speciality = speciality;
             Group = group;
+        }
+        public override string ToString()
+        {
+            return $"Имя: {Name}, Специальность: {Speciality}, Группа: {Group}";
         }
     }
 }

@@ -22,5 +22,20 @@ namespace BusinessLogic
                 }
             }
         }
+        public Dictionary<string, int> GetHistogram()
+        {
+            Dictionary<string, int> histogram = new Dictionary<string, int>();
+            int totalStudents = 0;
+            foreach (var entry in specialityHistogram)
+            {
+                totalStudents += entry.Value;
+            }
+            foreach (var entry in specialityHistogram)
+            {
+                int percentage = (int)((double)entry.Value / totalStudents * 100);
+                histogram[entry.Key] = percentage;
+            }
+            return histogram;
+        }
     }
 }
