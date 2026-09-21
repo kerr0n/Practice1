@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="Model/ViewConsole.csproj" />
+  <Project Path="BusinessLogic/BusinessLogic.csproj" Id="7e8df5fb-4973-4765-bb07-402d8dab7d8b" />
+  <Project Path="Model/Model.csproj" Id="6f68e2fc-40c8-469f-9d10-72e57d43014b" />
+  <Project Path="ViewConsole/ViewConsole.csproj" Id="664ca27d-8c1f-437f-81c7-f66391161d6b" />
 </Solution>
