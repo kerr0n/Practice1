@@ -15,20 +15,20 @@ namespace ViewWinForms
             InitializeComponent();
 
             Text = "Гистограмма направлений";
-            ClientSize = new Size(600, 350);
+            ClientSize = new Size(900, 550);
             AutoScroll = true;
 
-            int y = 20;
+            int y = 40;
 
             foreach (var entry in histogram)
             {
                 Label lblSpeciality = new Label();
                 lblSpeciality.Text = entry.Key;
                 lblSpeciality.Location = new Point(15, y);
-                lblSpeciality.Size = new Size(190, 23);
+                lblSpeciality.Size = new Size(400, 40);
 
                 ProgressBar progressBar = new ProgressBar();
-                progressBar.Location = new Point(210, y);
+                progressBar.Location = new Point(420, y);
                 progressBar.Size = new Size(290, 23);
                 progressBar.Minimum = 0;
                 progressBar.Maximum = 100;
@@ -36,14 +36,14 @@ namespace ViewWinForms
 
                 Label lblPercent = new Label();
                 lblPercent.Text = $"{entry.Value}%";
-                lblPercent.Location = new Point(510, y);
-                lblPercent.Size = new Size(50, 23);
+                lblPercent.Location = new Point(720, y);
+                lblPercent.Size = new Size(50, 40);
 
                 Controls.Add(lblSpeciality);
                 Controls.Add(progressBar);
                 Controls.Add(lblPercent);
 
-                y += 40;
+                y += 80;
             }
         }
     }
