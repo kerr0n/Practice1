@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    public interface IDomaneObject
+    public interface IDomainObject
     {
         int Id { get; set; }
     }

@@ -6,11 +6,11 @@ using Model;
 namespace DataAccessLayer
 {
     public interface IRepository<T> : IDisposable
-        where T : class, IDomaneObject
+        where T : class, IDomainObject
     {
         void Create(T item);
 
-        List<T> ReadAll();
+        IEnumerable<T> ReadAll();
 
         T? ReadById(int id);
 
