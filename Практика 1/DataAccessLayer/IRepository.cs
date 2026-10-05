@@ -5,20 +5,17 @@ using Model;
 
 namespace DataAccessLayer
 {
-    internal interface IRepository
+    public interface IRepository<T> : IDisposable
+        where T : class, IDomaneObject
     {
-        public interface IRepository<T> : IDisposable
-            where T : class, IDomaneObject
-        {
-            void Create(T item);
+        void Create(T item);
 
-            List<T> ReadAll();
+        List<T> ReadAll();
 
-            T ReadById(int id);
+        T? ReadById(int id);
 
-            void Delete(int id);
+        void Delete(int id);
 
-            void Update(T item);
-        }
+        void Update(T item);
     }
 }

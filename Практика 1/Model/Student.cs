@@ -16,6 +16,12 @@ namespace Model
             Speciality = speciality;
             Group = group;
         }
+        public Student()
+        {
+            Name = string.Empty;
+            Speciality = string.Empty;
+            Group = string.Empty;
+        }
         public override string ToString()
         {
             return $"Имя: {Name}, Специальность: {Speciality}, Группа: {Group}";
