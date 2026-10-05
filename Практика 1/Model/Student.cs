@@ -10,9 +10,8 @@ namespace Model
         public string Name { get; set; }
         public string Speciality { get; set; }
         public string Group { get; set; }
-        public Student(int id, string name, string speciality, string group)
+        public Student(string name, string speciality, string group)
         {
-            Id = id;
             Name = name;
             Speciality = speciality;
             Group = group;
