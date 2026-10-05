@@ -4,7 +4,7 @@ namespace ViewWinForms
 {
     public partial class Form1 : Form
     {
-        private BusinessLogic.Logic logic = new BusinessLogic.Logic();
+        private BusinessLogic.Logic logic = BusinessLogic.Logic.Create();
         public Form1()
         {
 

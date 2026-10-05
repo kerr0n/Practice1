@@ -6,8 +6,10 @@ using DataAccessLayer;
 
 namespace BusinessLogic
 {
-    public class Logic : IDisposable
+    public class Logic
     {
+        private static readonly string _databasePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,"..", "..", "..", "..","DataAccessLayer","Database.mdf"));
+        private static readonly string _connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={_databasePath};Integrated Security=True;Encrypt=False;";
         private readonly IRepository<Student> _repository;
 
         public Logic(IRepository<Student> repository)
@@ -17,14 +19,14 @@ namespace BusinessLogic
 
         public List<Student> students { get; set; } = new List<Student>
         {
-            new Student("Томилов Станислав", "Прикладная информатика", "КИ25-20Б"),
-            new Student("Ганеев Иван", "Прикладная информатика", "КИ25-20Б"),
-            new Student("Ирдынеев Анжил", "Программная инженерия", "КИ25-10/1БГ"),
-            new Student("Волынов Владислав", "Градостроительство", "ГРБ25-1"),
-            new Student("Воробьёв Никита", "Градостроительство", "ГРБ25-1"),
-            new Student("Енуленко Олег", "Градостроительство", "ГРБ25-1"),
-            new Student("Ходырев Сергей", "Строительство", "ГРБ25-10"),
-            new Student("Андреев Александр", "Инноватика", "САФ26-12")
+            //new Student("Томилов Станислав", "Прикладная информатика", "КИ25-20Б"),
+            //new Student("Ганеев Иван", "Прикладная информатика", "КИ25-20Б"),
+            //new Student("Ирдынеев Анжил", "Программная инженерия", "КИ25-10/1БГ"),
+            //new Student("Волынов Владислав", "Градостроительство", "ГРБ25-1"),
+            //new Student("Воробьёв Никита", "Градостроительство", "ГРБ25-1"),
+            //new Student("Енуленко Олег", "Градостроительство", "ГРБ25-1"),
+            //new Student("Ходырев Сергей", "Строительство", "ГРБ25-10"),
+            //new Student("Андреев Александр", "Инноватика", "САФ26-12")
         };
 
         /// <summary>
@@ -33,18 +35,8 @@ namespace BusinessLogic
         /// <returns></returns>
         public static Logic Create()
         {
-            var repository = new StudentDapperRepository(
-                DatabaseSettings.ConnectionString);
-
+            var repository = new StudentDapperRepository(_connectionString);
             return new Logic(repository);
-        }
-
-        /// <summary>
-        /// Освобождает ресурсы, используемые репозиторием
-        /// </summary>
-        public void Dispose()
-        {
-            _repository.Dispose();
         }
 
         /// <summary>
