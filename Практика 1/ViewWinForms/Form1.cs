@@ -9,7 +9,7 @@ namespace ViewWinForms
         {
 
             InitializeComponent();
-            dgvStudents.DataSource = logic.students;
+            RefreshStudents();
         }
 
 
@@ -18,24 +18,27 @@ namespace ViewWinForms
             var form = new Form2(logic);
             if (form.ShowDialog(this) == DialogResult.OK)
             {
-                dgvStudents.DataSource = null;
-                dgvStudents.DataSource = logic.students;
+                RefreshStudents();
             }
         }
 
         private void btnDeleteStudent_Click(object sender, EventArgs e)
         {
-            if (dgvStudents.CurrentRow == null)
+            if (dgvStudents.CurrentRow?.DataBoundItem is not Model.Student student)
             {
                 MessageBox.Show("Выберите студента.");
                 return;
             }
 
-            int index = dgvStudents.CurrentRow.Index;
-            logic.DeleteStudent(index);
-
-            dgvStudents.DataSource = null;
-            dgvStudents.DataSource = logic.students;
+            try
+            {
+                logic.DeleteStudent(student.Id);
+                RefreshStudents();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Ошибка");
+            }
         }
 
         private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -49,6 +52,12 @@ namespace ViewWinForms
 
             using var form = new Form3(histogram);
             form.ShowDialog(this);
+        }
+
+        private void RefreshStudents()
+        {
+            dgvStudents.DataSource = null;
+            dgvStudents.DataSource = logic.GetStudents();
         }
     }
 }

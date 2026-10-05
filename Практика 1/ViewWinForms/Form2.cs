@@ -36,8 +36,20 @@ namespace ViewWinForms
                 return;
             }
 
-            logic.AddStudent(name, speciality, group);
-            DialogResult = DialogResult.OK;
+            try
+            {
+                logic.AddStudent(name, speciality, group);
+                DialogResult = DialogResult.OK;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Ошибка");
+            }
+        }
+
+        private void txtFullName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

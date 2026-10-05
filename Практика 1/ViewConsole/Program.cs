@@ -1,6 +1,6 @@
 ﻿using BusinessLogic;
 
-Logic logic = Logic.Create();
+using var logic = Logic.Create();
 Console.WriteLine("Добро пожаловать в ДеканатPRO");
 bool markerToWhile = true;
 while (markerToWhile)
@@ -45,16 +45,22 @@ while (markerToWhile)
             break;
         case "2":
             Console.Clear();
-            Console.WriteLine("Введите номер студента в списке для удаления:");
-            string studentNumber = Console.ReadLine();
-            if (int.TryParse(studentNumber, out int index))
+            Console.WriteLine("Введите ID студента для удаления:");
+            if (int.TryParse(Console.ReadLine(), out int id) && id > 0)
             {
-                index--;
-                logic.DeleteStudent(index);
+                try
+                {
+                    logic.DeleteStudent(id);
+                    Console.WriteLine("Студент удалён.");
+                }
+                catch (ArgumentException exception)
+                {
+                    Console.WriteLine(exception.Message);
+                }
             }
             else
             {
-                Console.WriteLine("Неверный номер студента. Пожалуйста, попробуйте снова.");
+                Console.WriteLine("Неверный ID.");
             }
             Console.WriteLine("Нажмите любую клавишу, чтобы продолжить");
             Console.ReadKey();
@@ -62,10 +68,10 @@ while (markerToWhile)
         case "3":
             Console.Clear();
             Console.WriteLine("Список студентов:");
-            for (int i = 0; i < logic.students.Count; i++)
+            var students = logic.GetStudents();
+            foreach (var student in students)
             {
-                var student = logic.students[i];
-                Console.WriteLine($"{i + 1}. {student.ToString()}");
+                Console.WriteLine($"ID {student.Id}: {student}");
             }
             Console.WriteLine("Нажмите любую клавишу, чтобы продолжить");
             Console.ReadKey();

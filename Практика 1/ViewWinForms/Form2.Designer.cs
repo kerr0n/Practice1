@@ -42,6 +42,7 @@
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(360, 23);
             txtFullName.TabIndex = 1;
+            txtFullName.TextChanged += txtFullName_TextChanged;
             // 
             // lblGroup
             // 
