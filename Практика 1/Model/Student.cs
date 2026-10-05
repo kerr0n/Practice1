@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    public class Student : IDomaneObject
+    public class Student : IDomainObject
     {
         public int Id { get; set; }
         public string Name { get; set; }
