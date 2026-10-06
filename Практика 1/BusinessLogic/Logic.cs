@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using DataAccessLayer;
 using Model;
-using DataAccessLayer;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Text;
 
 namespace BusinessLogic
 {
@@ -23,7 +24,9 @@ namespace BusinessLogic
         /// <returns></returns>
         public static Logic Create()
         {
-            var repository = new StudentDapperRepository(_connectionString);
+            var context = new Context(_connectionString);
+            var repository = new EntityFrameworkRepository<Student>(context);
+            //var repository = new StudentDapperRepository(_connectionString);
             return new Logic(repository);
         }
 

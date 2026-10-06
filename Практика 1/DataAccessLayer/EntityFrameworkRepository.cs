@@ -4,7 +4,7 @@ using System.Text;
 using Model;    
 namespace DataAccessLayer
 {
-    internal class EntityFrameworkRepository<T> : IRepository<T> where T : class, IDomainObject, new()
+    public class EntityFrameworkRepository<T> : IRepository<T> where T : class, IDomainObject, new()
     {
         public Context context;
         public EntityFrameworkRepository(Context context)
