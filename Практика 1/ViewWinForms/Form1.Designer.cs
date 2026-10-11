@@ -38,17 +38,20 @@
             // dgvStudents
             // 
             dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStudents.Location = new Point(12, 12);
+            dgvStudents.Location = new Point(22, 26);
+            dgvStudents.Margin = new Padding(6, 6, 6, 6);
             dgvStudents.Name = "dgvStudents";
-            dgvStudents.Size = new Size(422, 304);
+            dgvStudents.RowHeadersWidth = 82;
+            dgvStudents.Size = new Size(784, 649);
             dgvStudents.TabIndex = 0;
             dgvStudents.CellContentClick += dgvStudents_CellContentClick;
             // 
             // btnAddStudent
             // 
-            btnAddStudent.Location = new Point(449, 27);
+            btnAddStudent.Location = new Point(834, 58);
+            btnAddStudent.Margin = new Padding(6, 6, 6, 6);
             btnAddStudent.Name = "btnAddStudent";
-            btnAddStudent.Size = new Size(148, 39);
+            btnAddStudent.Size = new Size(275, 83);
             btnAddStudent.TabIndex = 1;
             btnAddStudent.Text = "добавить студента";
             btnAddStudent.UseVisualStyleBackColor = true;
@@ -56,9 +59,10 @@
             // 
             // btnDeleteStudent
             // 
-            btnDeleteStudent.Location = new Point(449, 148);
+            btnDeleteStudent.Location = new Point(834, 316);
+            btnDeleteStudent.Margin = new Padding(6, 6, 6, 6);
             btnDeleteStudent.Name = "btnDeleteStudent";
-            btnDeleteStudent.Size = new Size(148, 38);
+            btnDeleteStudent.Size = new Size(275, 81);
             btnDeleteStudent.TabIndex = 2;
             btnDeleteStudent.Text = "удалить студента";
             btnDeleteStudent.UseVisualStyleBackColor = true;
@@ -66,9 +70,10 @@
             // 
             // btnShowHistogram
             // 
-            btnShowHistogram.Location = new Point(449, 274);
+            btnShowHistogram.Location = new Point(834, 585);
+            btnShowHistogram.Margin = new Padding(6, 6, 6, 6);
             btnShowHistogram.Name = "btnShowHistogram";
-            btnShowHistogram.Size = new Size(148, 42);
+            btnShowHistogram.Size = new Size(275, 90);
             btnShowHistogram.TabIndex = 3;
             btnShowHistogram.Text = "показать гистограмму";
             btnShowHistogram.UseVisualStyleBackColor = true;
@@ -76,15 +81,17 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(630, 350);
+            ClientSize = new Size(1170, 747);
             Controls.Add(btnShowHistogram);
             Controls.Add(btnDeleteStudent);
             Controls.Add(btnAddStudent);
             Controls.Add(dgvStudents);
+            Margin = new Padding(6, 6, 6, 6);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgvStudents).EndInit();
             ResumeLayout(false);
         }

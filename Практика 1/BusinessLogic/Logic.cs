@@ -22,12 +22,19 @@ namespace BusinessLogic
         /// Создаёт экземпляр класса Logic с репозиторием для работы с базой данных
         /// </summary>
         /// <returns></returns>
-        public static Logic Create()
+        public static Logic Create(string AccessType)
         {
-            var context = new Context(_connectionString);
-            var repository = new EntityFrameworkRepository<Student>(context);
-            //var repository = new StudentDapperRepository(_connectionString);
-            return new Logic(repository);
+            if (AccessType == "EF")
+            {
+                var context = new Context(_connectionString);
+                var repository = new EntityFrameworkRepository<Student>(context);
+                return new Logic(repository);
+            }
+            else
+            {
+                var repository = new StudentDapperRepository(_connectionString);
+                return new Logic(repository);
+            }
         }
 
         /// <summary>

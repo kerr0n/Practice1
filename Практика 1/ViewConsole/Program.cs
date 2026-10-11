@@ -1,6 +1,6 @@
 ﻿using BusinessLogic;
 
-using var logic = Logic.Create();
+using var logic = Logic.Create("EF");
 Console.WriteLine("Добро пожаловать в ДеканатPRO");
 bool markerToWhile = true;
 while (markerToWhile)

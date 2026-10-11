@@ -4,7 +4,7 @@ namespace ViewWinForms
 {
     public partial class Form1 : Form
     {
-        private BusinessLogic.Logic logic = BusinessLogic.Logic.Create();
+        private BusinessLogic.Logic logic = BusinessLogic.Logic.Create("Dapper");
         public Form1()
         {
 
@@ -58,6 +58,11 @@ namespace ViewWinForms
         {
             dgvStudents.DataSource = null;
             dgvStudents.DataSource = logic.GetStudents();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
