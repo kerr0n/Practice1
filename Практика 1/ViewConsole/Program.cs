@@ -1,6 +1,8 @@
 ﻿using BusinessLogic;
+using Ninject;
 
-using var logic = Logic.Create("EF");
+IKernel ninjectKernel = new StandardKernel(new SimpleConfigModule());
+Logic logic = ninjectKernel.Get<Logic>();
 Console.WriteLine("Добро пожаловать в ДеканатPRO");
 bool markerToWhile = true;
 while (markerToWhile)
