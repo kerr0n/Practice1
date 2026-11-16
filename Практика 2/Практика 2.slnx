@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Model/Model.csproj" />
+  <Project Path="Presenter/Presenter.csproj" />
+  <Project Path="View/View.csproj" Id="452276cc-952e-4253-b077-eb80715c2771" />
+</Solution>
